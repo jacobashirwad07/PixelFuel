@@ -1,0 +1,46 @@
+.game-details {
+    margin: 40px 0;
+    padding: 20px;
+    background: #1a2233;
+    border-radius: 16px;
+  }
+  .game-details h2 {
+    color: #f3f6fa;
+    margin-bottom: 24px;
+  }
+  .game-details-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 32px;
+  }
+  .game-details-item {
+    background: #232b3e;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px #0002;
+  }
+  .game-details-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .game-details-info h3 {
+    color: #fff;
+    margin: 0 0 8px 0;
+  }
+  .game-details-info p {
+    color: #d0e6fa;
+    margin: 0 0 8px 0;
+  }
+  .game-details-price {
+    color: #FF4C24;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  

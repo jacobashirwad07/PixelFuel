@@ -1,0 +1,207 @@
+.login-popup {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  .login-popup-container {
+    background: #232b3e;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px #0005;
+    padding: 40px 32px 32px 32px;
+    min-width: 340px;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    animation: fadeIn 0.5s;
+  }
+  .login-popup-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .login-popup-title h2 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .login-popup-title img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    filter: invert(1);
+  }
+  .login-popup-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+  .login-popup-inputs input {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #181e2a;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .login-popup-inputs input:focus {
+    border: 1.5px solid #FF4C24;
+  }
+  button {
+    background: #FF4C24;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:hover {
+    background: #d13a1b;
+  }
+  .login-popup-condition {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 18px 0 10px 0;
+    font-size: 0.95rem;
+    color: #d0e6fa;
+  }
+  .login-popup-condition input[type="checkbox"] {
+    accent-color: #FF4C24;
+    margin-top: 3px;
+  }
+  .login-popup p {
+    color: #d0e6fa;
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+  }
+  .login-popup span {
+    color: #FF4C24;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: text-decoration 0.2s;
+  }
+  .login-popup span:hover {
+    text-decoration: underline;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .login-popup-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .login-popup-switcher button {
+    background: #232b3e;
+    color: #fff;
+    border: 1.5px solid #444;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    outline: none;
+  }
+  .login-popup-switcher button.active {
+    background: #FF4C24;
+    color: #fff;
+    border-bottom: 2.5px solid #FF4C24;
+  }
+  .login-popup-switcher button:not(.active):hover {
+    background: #181e2a;
+    color: #FF4C24;
+  }
+  .login-popup-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 18px;
+    background: #181e2a;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0002;
+  }
+  .login-popup-switcher button {
+    background: none;
+    color: #fff;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    padding: 12px 36px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    outline: none;
+  }
+  .login-popup-switcher button.active {
+    background: #FF4C24;
+    color: #fff;
+    border-bottom: 3px solid #FF4C24;
+  }
+  .login-popup-switcher button:not(.active):hover {
+    background: #232b3e;
+    color: #FF4C24;
+  }
+  .otp-modal {
+    background: #232b3e;
+    border-radius: 16px;
+    padding: 36px 28px;
+    min-width: 320px;
+    box-shadow: 0 2px 16px #0005;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.4s;
+  }
+  .otp-modal h3 {
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .otp-modal p {
+    color: #d0e6fa;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .otp-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 18px;
+  }
+  .otp-check {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 8px;
+    animation: pop 0.5s;
+  }
+  @keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  
