@@ -1,75 +1,63 @@
-# PixelFuel
+# PixelFuel Gaming Services Marketplace
 
-PixelFuel is a modern platform for discovering, managing, and processing digital games and assets. It features both a user-facing frontend and an admin dashboard for content management.
+A comprehensive gaming marketplace platform where users can purchase games, hire gaming coaches, book gaming services (PC setup, repair, coaching), and access digital gaming content with secure payment options.
 
 ## Project Structure
 
 ```
-PixelFuel/
-│
-├── Clone.main/
-│   ├── frontend/      # User-facing React app
-│   └── admin/         # Admin dashboard React app
-│
+pixelfuel-gaming-marketplace/
+├── backend/           # Node.js + Express API
+├── frontend/          # React.js Gaming Store Interface
+├── admin/            # Admin Dashboard
 └── README.md
 ```
 
-### `Clone.main/frontend`
+## Features
 
-- Main web application for users to browse, explore, and interact with games and services.
-- Key folders:
-  - `src/pages/` — Main pages (Home, Cart, Orders, etc.)
-  - `src/components/` — Reusable UI components (Navbar, Footer, GameDisplay, etc.)
+- **Gaming Store**: Digital game purchases and downloads
+- **Gaming Services**: PC setup, repair, optimization, coaching
+- **Coach Booking**: Professional gaming coaches and trainers
+- **User Registration**: OTP-based verification
+- **Ratings & Reviews**: Community-driven feedback system
+- **Purchase & Booking History**: Complete transaction tracking
+- **Admin Panel**: Games, services, and provider management
+- **Payment Gateway**: Secure Razorpay/Stripe integration
 
-### `Clone.main/admin`
+## Development Timeline
 
-- Admin dashboard for managing games, orders, and content.
-- Key folders:
-  - `src/pages/` — Admin pages (Add, List, Orders)
-  - `src/components/` — Admin UI components (Navbar, Sidebar, etc.)
+- **Week 1**: Authentication & Gaming Store Setup
+- **Week 2**: Service APIs & Gaming Coach Booking
+- **Week 3**: Booking Management & Reviews
+- **Week 4**: Payment Integration & Final Polish
 
 ## Getting Started
 
 ### Prerequisites
+- Node.js (v16+)
+- MongoDB
+- npm or yarn
 
-- Node.js and npm installed
+### Installation
 
-### Setup
+1. Clone the repository
+2. Install backend dependencies: `cd backend && npm install`
+3. Install frontend dependencies: `cd frontend && npm install`
+4. Install admin dependencies: `cd admin && npm install`
+5. Set up environment variables
+6. Start development servers
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/PixelFuel.git
-   cd PixelFuel/Clone.main/frontend
-   ```
+## Tech Stack
 
-2. Install dependencies for both frontend and admin:
-   ```bash
-   cd frontend
-   npm install
-   cd ../admin
-   npm install
-   ```
+- **Backend**: Node.js, Express.js, MongoDB, JWT
+- **Frontend**: React.js, React Router, Axios
+- **Admin**: React.js Admin Dashboard
+- **Payment**: Razorpay/Stripe
+- **Authentication**: JWT + Bcrypt
 
-3. Start the development servers:
-   ```bash
-   # In one terminal
-   cd frontend
-   npm start
+## Gaming Services Categories
 
-   # In another terminal
-   cd ../admin
-   npm start
-   ```
-
-## Usage
-
-- Visit the frontend at `http://localhost:3000`
-- Visit the admin dashboard at `http://localhost:3001` (or the port specified)
-
-## Contributing
-
-Pull requests and issues are welcome!
-
-## License
-
-MIT License
+- **PC Gaming Setup**: Custom PC builds, hardware installation
+- **Gaming Coaching**: Professional esports coaching, skill improvement
+- **Game Repair Services**: Console repair, PC troubleshooting
+- **Gaming Optimization**: Performance tuning, software setup
+- **Tournament Organization**: Local gaming events and competitions
