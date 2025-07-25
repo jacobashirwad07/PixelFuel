@@ -1,4 +1,4 @@
-# 🎮 GameHub — Game-Based Hyperlocal Service Marketplace
+# 🎮 PixelFuel— Game-Based Hyperlocal Service Marketplace
 
 Welcome to **GameHub**, a full-stack marketplace web application inspired by Urban Company, tailored for the gaming ecosystem. This platform allows users to browse, book, and pay for game-related services such as game coaching, tournaments, item rentals, and more — all while managing ratings, reviews, and booking history.
 
