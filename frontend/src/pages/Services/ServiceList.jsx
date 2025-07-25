@@ -2,7 +2,128 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../context/AuthContext';
 import './ServiceList.css';
+
+// Dummy services for demo if API returns nothing
+const dummyServicesByCategory = {
+  '1': [
+    {
+      _id: 'd1',
+      name: '1v1 Pro Coaching Session',
+      description: 'Get personalized coaching from a pro gamer for 1 hour.',
+      basePrice: 499,
+      duration: 60,
+      availableProviders: 5,
+      tags: ['Coaching', '1v1', 'Pro'],
+    },
+    {
+      _id: 'd2',
+      name: 'Team Training Bootcamp',
+      description: 'Intensive team training for competitive squads.',
+      basePrice: 1499,
+      duration: 180,
+      availableProviders: 2,
+      tags: ['Team', 'Training', 'Esports'],
+    },
+  ],
+  '2': [
+    {
+      _id: 'd3',
+      name: 'Custom Gaming PC Build',
+      description: 'We build your dream gaming PC with top-tier components.',
+      basePrice: 2999,
+      duration: 120,
+      availableProviders: 3,
+      tags: ['PC', 'Build', 'Custom'],
+    },
+  ],
+  '3': [
+    {
+      _id: 'd4',
+      name: 'Console Repair Express',
+      description: 'Fast and reliable repair for your PlayStation or Xbox.',
+      basePrice: 799,
+      duration: 90,
+      availableProviders: 4,
+      tags: ['Repair', 'Console', 'Express'],
+    },
+  ],
+  '4': [
+    {
+      _id: 'd5',
+      name: 'Streaming Setup Starter',
+      description: 'Complete setup for your first professional stream.',
+      basePrice: 999,
+      duration: 60,
+      availableProviders: 2,
+      tags: ['Streaming', 'Setup', 'Starter'],
+    },
+  ],
+  '5': [
+    {
+      _id: 'd6',
+      name: 'FPS Optimization',
+      description: 'Boost your game performance and frame rates.',
+      basePrice: 399,
+      duration: 45,
+      availableProviders: 3,
+      tags: ['Optimization', 'FPS', 'Performance'],
+    },
+  ],
+  '6': [
+    {
+      _id: 'd7',
+      name: 'Tournament Bracket Management',
+      description: 'Professional bracket management for your esports event.',
+      basePrice: 599,
+      duration: 120,
+      availableProviders: 1,
+      tags: ['Tournament', 'Bracket', 'Esports'],
+    },
+  ],
+  'all': [
+    // Add a few from each for the all category
+    {
+      _id: 'd1',
+      name: '1v1 Pro Coaching Session',
+      description: 'Get personalized coaching from a pro gamer for 1 hour.',
+      basePrice: 499,
+      duration: 60,
+      availableProviders: 5,
+      tags: ['Coaching', '1v1', 'Pro'],
+    },
+    {
+      _id: 'd3',
+      name: 'Custom Gaming PC Build',
+      description: 'We build your dream gaming PC with top-tier components.',
+      basePrice: 2999,
+      duration: 120,
+      availableProviders: 3,
+      tags: ['PC', 'Build', 'Custom'],
+    },
+    {
+      _id: 'd4',
+      name: 'Console Repair Express',
+      description: 'Fast and reliable repair for your PlayStation or Xbox.',
+      basePrice: 799,
+      duration: 90,
+      availableProviders: 4,
+      tags: ['Repair', 'Console', 'Express'],
+    },
+    {
+      _id: 'd5',
+      name: 'Streaming Setup Starter',
+      description: 'Complete setup for your first professional stream.',
+      basePrice: 999,
+      duration: 60,
+      availableProviders: 2,
+      tags: ['Streaming', 'Setup', 'Starter'],
+    },
+  ],
+};
+
+import { useCart } from '../../context/CartContext';
 
 const ServiceList = () => {
   const { category } = useParams();
@@ -20,6 +141,8 @@ const ServiceList = () => {
     totalPages: 1,
     totalServices: 0
   });
+  const { user } = useAuth();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     fetchServices();
@@ -38,7 +161,7 @@ const ServiceList = () => {
         params.category = category;
       }
 
-      const response = await axios.get('/api/services', { params });
+      const response = await axios.get('http://localhost:5001/api/services', { params });
       
       if (response.data.success) {
         setServices(response.data.data.services);
@@ -67,15 +190,20 @@ const ServiceList = () => {
 
   const getCategoryName = (categoryId) => {
     const categories = {
-      'gaming-coaching': 'Gaming Coaching',
-      'pc-building': 'PC Building',
-      'console-repair': 'Console Repair',
-      'streaming-setup': 'Streaming Setup',
-      'pc-optimization': 'Gaming Optimization',
-      'tournament-organization': 'Tournament Organization'
+      '1': 'Gaming Coaching',
+      '2': 'PC Building', 
+      '3': 'Console Repair',
+      '4': 'Streaming Setup',
+      '5': 'Gaming Optimization',
+      '6': 'Tournament Organization'
     };
     return categories[categoryId] || 'All Services';
   };
+
+  // Use dummy services if API returns nothing
+  const displayServices = services.length === 0
+    ? (dummyServicesByCategory[category] || dummyServicesByCategory['all'])
+    : services;
 
   if (loading) {
     return (
@@ -155,14 +283,14 @@ const ServiceList = () => {
             <h3>{pagination.totalServices} Services Found</h3>
           </div>
           
-          {services.length === 0 ? (
+          {displayServices.length === 0 ? (
             <div className="no-services">
               <h3>No services found</h3>
               <p>Try adjusting your filters or search terms</p>
             </div>
           ) : (
             <div className="services-grid">
-              {services.map(service => (
+              {displayServices.map(service => (
                 <div key={service._id} className="service-card">
                   <div className="service-header">
                     <h3>{service.name}</h3>
@@ -189,18 +317,18 @@ const ServiceList = () => {
                   </div>
                   
                   <div className="service-actions">
-                    <Link 
-                      to={`/services/${service._id}`} 
-                      className="btn btn-outline"
-                    >
-                      View Details
-                    </Link>
-                    <Link 
-                      to={`/services/${service._id}/book`} 
+                    <button 
+                      onClick={() => addToCart(service._id)}
                       className="btn btn-primary"
                     >
+                      Add to Cart
+                    </button>
+                    <button 
+                      onClick={() => addToCart(service._id)}
+                      className="btn btn-outline"
+                    >
                       Book Now
-                    </Link>
+                    </button>
                   </div>
                 </div>
               ))}

@@ -5,12 +5,12 @@ import './Auth.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: 'testuser@example.com',
+    password: 'password123'
   });
   const [errors, setErrors] = useState({});
   
-  const { login, isAuthenticated, loading } = useAuth();
+  const { login, isAuthenticated, loading, user, token, mockLogin } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,6 +59,16 @@ const Login = () => {
       return;
     }
 
+    // Mock login: if dummy credentials, simulate success
+    if (
+      formData.email === 'testuser@example.com' &&
+      formData.password === 'password123'
+    ) {
+      mockLogin();
+      navigate('/');
+      return;
+    }
+
     const result = await login(formData.email, formData.password);
     
     if (result.success) {
@@ -83,6 +93,13 @@ const Login = () => {
               <div className="auth-logo">🎮</div>
               <h2>Welcome Back, Gamer!</h2>
               <p>Sign in to your PixelFuel account</p>
+            </div>
+
+            {/* Dummy credentials display */}
+            <div className="dummy-credentials" style={{ background: '#f5f5f5', borderRadius: '8px', padding: '12px', marginBottom: '18px', border: '1px solid #e0e0e0' }}>
+              <strong>Demo Login:</strong><br />
+              <span>Email: <code>testuser@example.com</code></span><br />
+              <span>Password: <code>password123</code></span>
             </div>
 
             <form onSubmit={handleSubmit} className="auth-form">

@@ -151,13 +151,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const mockLogin = () => {
+    dispatch({
+      type: 'LOGIN_SUCCESS',
+      payload: {
+        user: {
+          _id: 'dummyid',
+          email: 'testuser@example.com',
+          name: 'Demo User',
+        },
+        token: 'dummy-token-123',
+      },
+    });
+  };
+
   const value = {
     ...state,
     login,
     register,
     logout,
     updateProfile,
-    loadUser
+    loadUser,
+    mockLogin
   };
 
   return (

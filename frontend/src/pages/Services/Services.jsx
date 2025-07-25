@@ -49,6 +49,38 @@ const Services = () => {
     }
   ];
 
+  // Dummy individual services
+  const dummyServices = [
+    {
+      id: 101,
+      name: '1v1 Pro Coaching Session',
+      description: 'Get personalized coaching from a pro gamer for 1 hour.',
+      price: 499,
+      icon: '🎯',
+    },
+    {
+      id: 102,
+      name: 'Custom Gaming PC Build',
+      description: 'We build your dream gaming PC with top-tier components.',
+      price: 2999,
+      icon: '🖥️',
+    },
+    {
+      id: 103,
+      name: 'Console Repair Express',
+      description: 'Fast and reliable repair for your PlayStation or Xbox.',
+      price: 799,
+      icon: '🔧',
+    },
+    {
+      id: 104,
+      name: 'Streaming Setup Starter',
+      description: 'Complete setup for your first professional stream.',
+      price: 999,
+      icon: '📹',
+    },
+  ];
+
   return (
     <div className="services-page">
       <div className="container">

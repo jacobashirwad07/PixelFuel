@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Games.css';
+import { useCart } from '../../context/CartContext';
+import { toast } from 'react-toastify';
 
 const Games = () => {
   const [games, setGames] = useState([]);
@@ -11,6 +13,8 @@ const Games = () => {
     priceRange: '',
     search: ''
   });
+
+  const { addToCart } = useCart();
 
   // Mock games data for now
   const mockGames = [
@@ -110,6 +114,11 @@ const Games = () => {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleBuyNow = (game) => {
+    addToCart(game.id);
+    toast.success('✔️ Added to cart!', { position: 'top-center', autoClose: 1000, hideProgressBar: true });
   };
 
   const filteredGames = games.filter(game => {
@@ -286,7 +295,7 @@ const Games = () => {
                     {formatPrice(game.price, game.discountPrice)}
                   </div>
                   <div className="game-actions">
-                    <button className="btn btn-primary">
+                    <button className="btn btn-primary" onClick={() => handleBuyNow(game)}>
                       {game.price === 0 ? 'Play Free' : 'Buy Now'}
                     </button>
                     <button className="btn btn-outline">

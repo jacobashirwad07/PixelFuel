@@ -73,6 +73,20 @@
   width: 80%;
 }
 
+.cart-link {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white !important;
+  border-radius: 20px;
+  padding: 0.5rem 1rem !important;
+  font-weight: 600;
+}
+
+.cart-link:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
 .navbar-auth {
   display: flex;
   gap: 1rem;

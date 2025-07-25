@@ -40,9 +40,14 @@ const Navbar = () => {
               Coaches
             </Link>
             {isAuthenticated && (
-              <Link to="/bookings" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
-                My Bookings
-              </Link>
+              <>
+                <Link to="/cart" className="navbar-link cart-link" onClick={() => setIsMenuOpen(false)}>
+                  🛒 Cart
+                </Link>
+                <Link to="/bookings" className="navbar-link" onClick={() => setIsMenuOpen(false)}>
+                  My Bookings
+                </Link>
+              </>
             )}
 
             {isAuthenticated ? (
